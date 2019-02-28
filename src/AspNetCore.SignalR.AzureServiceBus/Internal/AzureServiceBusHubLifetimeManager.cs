@@ -21,7 +21,7 @@ namespace AspNetCore.SignalR.AzureServiceBus.Internal
         {
             _nodeIdProvider = nodeIdProvider;
             _messageSender = messageSender;
-            this._serviceBusPublisher = serviceBusPublisher;
+            _serviceBusPublisher = serviceBusPublisher;
         }
 
         public override Task AddToGroupAsync(string connectionId, string groupName, CancellationToken cancellationToken = default(CancellationToken))

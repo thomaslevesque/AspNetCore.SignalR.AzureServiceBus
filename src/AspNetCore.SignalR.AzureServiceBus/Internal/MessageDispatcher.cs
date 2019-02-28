@@ -15,51 +15,29 @@ namespace AspNetCore.SignalR.AzureServiceBus.Internal
     {
         private readonly INodeIdProvider _nodeIdProvider;
         private readonly IMessageSenderProvider _messageSenderProvider;
+        private readonly IServiceBusListener _serviceBusListener;
         private readonly ILogger<MessageDispatcher> _logger;
         private readonly SignalRAzureServiceBusOptions _options;
-
-        private SubscriptionClient _subscriptionClient;
 
         public MessageDispatcher(
             INodeIdProvider nodeIdProvider,
             IMessageSenderProvider messageSenderProvider,
+            IServiceBusListener serviceBusListener,
             IOptions<SignalRAzureServiceBusOptions> options,
             ILogger<MessageDispatcher> logger)
         {
             _nodeIdProvider = nodeIdProvider;
             _messageSenderProvider = messageSenderProvider;
+            _serviceBusListener = serviceBusListener;
             _options = options.Value;
             _logger = logger;
         }
 
-        public async Task StartAsync(CancellationToken cancellationToken)
-        {
-            var subscriptionName = await GetOrCreateSubscriptionAsync(cancellationToken);
-            _subscriptionClient = new SubscriptionClient(_options.ConnectionString, _options.TopicName, subscriptionName);
-            _subscriptionClient.RegisterMessageHandler(OnMessageReceived, OnExceptionReceived);
-        }
+        public Task StartAsync(CancellationToken cancellationToken) =>
+            _serviceBusListener.StartListeningAsync(OnMessageReceived, OnExceptionReceived, cancellationToken);
 
-        public async Task StopAsync(CancellationToken cancellationToken)
-        {
-            if (_subscriptionClient != null)
-            {
-                ManagementClient managementClient = null;
-                try
-                {
-                    managementClient = new ManagementClient(_options.ConnectionString);
-                    await _subscriptionClient.CloseAsync().WithCancellationToken(cancellationToken);
-                    await managementClient.DeleteSubscriptionAsync(_subscriptionClient.TopicPath, _subscriptionClient.SubscriptionName, cancellationToken);
-                }
-                finally
-                {
-                    _subscriptionClient = null;
-                    if (managementClient != null)
-                    {
-                        await managementClient.CloseAsync().WithCancellationToken(cancellationToken);
-                    }
-                }
-            }
-        }
+        public Task StopAsync(CancellationToken cancellationToken) =>
+            _serviceBusListener.StopListeningAsync(cancellationToken);
 
         private async Task OnMessageReceived(Message sbMessage, CancellationToken cancellationToken)
         {
@@ -95,27 +73,6 @@ namespace AspNetCore.SignalR.AzureServiceBus.Internal
         {
             _logger.LogError(e.Exception, "Error processing message");
             return Task.CompletedTask;
-        }
-
-        private async Task<string> GetOrCreateSubscriptionAsync(CancellationToken cancellationToken)
-        {
-            var managementClient = new ManagementClient(_options.ConnectionString);
-            string subscriptionName = $"sub-{_nodeIdProvider.NodeId}";
-            try
-            {
-                await managementClient.GetSubscriptionAsync(_options.TopicName, subscriptionName, cancellationToken);
-            }
-            catch (MessagingEntityNotFoundException)
-            {
-                var subscription = new SubscriptionDescription(_options.TopicName, subscriptionName)
-                {
-                    AutoDeleteOnIdle = _options.AutoDeleteSubscriptionOnIdle,
-                    DefaultMessageTimeToLive = _options.MessageTimeToLive
-                };
-                await managementClient.CreateSubscriptionAsync(subscription, cancellationToken);
-            }
-
-            return subscriptionName;
         }
     }
 }
