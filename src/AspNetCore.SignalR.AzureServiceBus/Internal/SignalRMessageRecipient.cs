@@ -1,6 +1,5 @@
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
 
 namespace AspNetCore.SignalR.AzureServiceBus.Internal
 {
