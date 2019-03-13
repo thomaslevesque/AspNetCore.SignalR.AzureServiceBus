@@ -1,10 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
 
-namespace AspNetCore.SignalR.AzureServiceBus.Internal
+namespace AspNetCore.SignalR.AzureServiceBus.Internal.Recipients
 {
     internal class AllMessageRecipient : SignalRMessageRecipient
     {

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,7 +21,7 @@ namespace AspNetCore.SignalR.AzureServiceBus.Internal
                 hubTypeName,
                 name =>
                 {
-                    var hubType = Type.GetType(hubTypeName);
+                    var hubType = Type.GetType(name);
                     if (hubType == null)
                     {
                         return null;
