@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -26,7 +26,7 @@ namespace AspNetCore.SignalR.AzureServiceBus.Internal
         public static Task WhenCanceled(this CancellationToken cancellationToken)
         {
             var tcs = new TaskCompletionSource<int>();
-            CancellationTokenRegistration registration = default(CancellationTokenRegistration);
+            CancellationTokenRegistration registration = default;
             registration = cancellationToken.Register(o =>
             {
                 ((TaskCompletionSource<int>)o).TrySetCanceled(cancellationToken);
