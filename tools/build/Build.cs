@@ -17,9 +17,6 @@ namespace build
         [Option("-h|-?|--help", "Show help message", CommandOptionType.NoValue)]
         public bool ShowHelp { get; } = false;
 
-        [Option("-v|--version", "The version to build", CommandOptionType.SingleValue)]
-        public string Version { get; } = null;
-
         [Option("-c|--configuration", "The configuration to build", CommandOptionType.SingleValue)]
         public string Configuration { get; } = "Release";
 
@@ -43,8 +40,6 @@ namespace build
             string buildLogFile = Path.Combine(logsDir, "build.binlog");
             string packagesDir = Path.Combine(artifactsDir, "packages");
 
-            string version = GetVersion();
-
             Target(
                 "artifactDirectories",
                 () =>
@@ -59,7 +54,7 @@ namespace build
                 DependsOn("artifactDirectories"),
                 () => Run(
                     "dotnet",
-                    $"build -c \"{Configuration}\" /p:Version=\"{version}\" /bl:\"{buildLogFile}\""));
+                    $"build -c \"{Configuration}\" /bl:\"{buildLogFile}\""));
 
             Target(
                 "test",
@@ -73,23 +68,11 @@ namespace build
                 DependsOn("artifactDirectories", "build"),
                 () => Run(
                     "dotnet",
-                    $"pack -c \"{Configuration}\" --no-build /p:Version=\"{version}\" -o \"{packagesDir}\""));
+                    $"pack -c \"{Configuration}\" --no-build -o \"{packagesDir}\""));
 
             Target("default", DependsOn("test", "pack"));
 
             RunTargetsAndExit(RemainingArguments);
-
-            string GetVersion()
-            {
-                if (!string.IsNullOrEmpty(Version))
-                    return Version;
-
-                var tag = Environment.GetEnvironmentVariable("APPVEYOR_REPO_TAG_NAME");
-                if (!string.IsNullOrEmpty(tag))
-                    return tag;
-
-                return "0.0.0";
-            }
         }
 
         private static string GetSolutionDirectory() =>
