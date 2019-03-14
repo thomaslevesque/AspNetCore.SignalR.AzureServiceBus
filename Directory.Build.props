@@ -1,5 +1,7 @@
 <Project>
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
+        <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)AspNetCore.SignalR.AzureServiceBus.snk</AssemblyOriginatorKeyFile>
+        <SignAssembly>true</SignAssembly>
     </PropertyGroup>
 </Project>
