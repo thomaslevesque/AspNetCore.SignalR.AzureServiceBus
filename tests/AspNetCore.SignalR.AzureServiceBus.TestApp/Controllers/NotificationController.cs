@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using AspNetCore.SignalR.AzureServiceBus.TestApi.Hubs;
+using AspNetCore.SignalR.AzureServiceBus.TestApp.Hubs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
-namespace AspNetCore.SignalR.AzureServiceBus.TestApi.Controllers
+namespace AspNetCore.SignalR.AzureServiceBus.TestApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

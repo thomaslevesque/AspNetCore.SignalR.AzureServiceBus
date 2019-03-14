@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
-namespace AspNetCore.SignalR.AzureServiceBus.TestApi.Hubs
+namespace AspNetCore.SignalR.AzureServiceBus.TestApp.Hubs
 {
     public class ChatroomHub : Hub<IChatroomClient>
     {

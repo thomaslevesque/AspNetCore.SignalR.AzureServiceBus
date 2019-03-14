@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCore.SignalR.AzureServiceBus.TestApi\AspNetCore.SignalR.AzureServiceBus.TestApi.csproj" />
+    <ProjectReference Include="..\AspNetCore.SignalR.AzureServiceBus.TestApp\AspNetCore.SignalR.AzureServiceBus.TestApp.csproj" />
   </ItemGroup>
 
 </Project>

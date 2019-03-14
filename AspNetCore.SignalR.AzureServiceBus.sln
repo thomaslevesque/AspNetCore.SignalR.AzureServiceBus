@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.SignalR.AzureSer
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{932E7DED-D9BA-4B46-A7B8-D1398AE9B97F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.SignalR.AzureServiceBus.TestApi", "tests\AspNetCore.SignalR.AzureServiceBus.TestApi\AspNetCore.SignalR.AzureServiceBus.TestApi.csproj", "{0780F422-4C65-48B7-B337-24DDAB9A0508}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.SignalR.AzureServiceBus.TestApp", "tests\AspNetCore.SignalR.AzureServiceBus.TestApp\AspNetCore.SignalR.AzureServiceBus.TestApp.csproj", "{0780F422-4C65-48B7-B337-24DDAB9A0508}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.SignalR.AzureServiceBus.UnitTests", "tests\AspNetCore.SignalR.AzureServiceBus.UnitTests\AspNetCore.SignalR.AzureServiceBus.UnitTests.csproj", "{09FFB0A6-1EF3-404D-8A7F-C377D93F5C8F}"
 EndProject

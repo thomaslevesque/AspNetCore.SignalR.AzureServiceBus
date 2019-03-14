@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace AspNetCore.SignalR.AzureServiceBus.TestApi
+namespace AspNetCore.SignalR.AzureServiceBus.TestApp
 {
     public class Program
     {

@@ -1,4 +1,4 @@
-﻿using AspNetCore.SignalR.AzureServiceBus.TestApi;
+﻿using AspNetCore.SignalR.AzureServiceBus.TestApp;
 using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Connections;

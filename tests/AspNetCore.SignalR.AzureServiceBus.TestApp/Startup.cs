@@ -1,11 +1,11 @@
-﻿using AspNetCore.SignalR.AzureServiceBus.TestApi.Hubs;
+﻿using AspNetCore.SignalR.AzureServiceBus.TestApp.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AspNetCore.SignalR.AzureServiceBus.TestApi
+namespace AspNetCore.SignalR.AzureServiceBus.TestApp
 {
     public class Startup
     {
