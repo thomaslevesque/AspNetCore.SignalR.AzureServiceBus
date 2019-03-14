@@ -5,8 +5,17 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
+    /// <summary>
+    /// Extension methods for configuring Azure Service Bus-based scale-out for a SignalR Server in an <see cref="ISignalRServerBuilder" />.
+    /// </summary>
     public static class SignalRAzureServiceBusServiceCollectionExtensions
     {
+        /// <summary>
+        /// Adds scale-out to a <see cref="ISignalRServerBuilder"/>, using an Azure Service Bus topic.
+        /// </summary>
+        /// <param name="builder">The <see cref="ISignalRServerBuilder"/>.</param>
+        /// <param name="configureOptions">A callback to configure the service bus options.</param>
+        /// <returns>The same instance of the <see cref="ISignalRServerBuilder"/> for chaining.</returns>
         public static ISignalRServerBuilder AddAzureServiceBus(this ISignalRServerBuilder builder, Action<SignalRAzureServiceBusOptions> configureOptions)
         {
             builder.Services.Configure(configureOptions);
