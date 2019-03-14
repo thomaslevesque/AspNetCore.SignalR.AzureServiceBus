@@ -19,8 +19,8 @@ namespace AspNetCore.SignalR.AzureServiceBus.IntegrationTests
         public async Task Clients_Receive_Messages_Sent_From_Other_Server_Instance()
         {
             TestServer
-                server1 = CreateServer("https://localhost:51500"),
-                server2 = CreateServer("https://localhost:51501");
+                server1 = CreateServer(),
+                server2 = CreateServer();
 
             HubConnection
                 client1 = CreateClient(server1),
@@ -32,7 +32,9 @@ namespace AspNetCore.SignalR.AzureServiceBus.IntegrationTests
                 client1ReceivedMessage = new SemaphoreSlim(0, 1),
                 client2ReceivedMessage = new SemaphoreSlim(0, 1);
 
-            string messageReceivedByClient1 = null, messageReceivedByClient2 = null;
+            string
+                messageReceivedByClient1 = null,
+                messageReceivedByClient2 = null;
 
             client1.On<string>("ReceiveMessage", message =>
             {
@@ -49,8 +51,10 @@ namespace AspNetCore.SignalR.AzureServiceBus.IntegrationTests
             await client1.StartAsync();
             await client2.StartAsync();
 
-            string messageFromClient1 = "Hello world from 1";
-            string messageFromClient2 = "Hello world from 2";
+            string
+                messageFromClient1 = "Hello world from 1",
+                messageFromClient2 = "Hello world from 2";
+
             await client1.SendAsync("SendMessageAsync", messageFromClient1);
             await client2.SendAsync("SendMessageAsync", messageFromClient2);
 
@@ -62,12 +66,11 @@ namespace AspNetCore.SignalR.AzureServiceBus.IntegrationTests
             messageReceivedByClient2.Should().Be(messageFromClient1);
         }
 
-        private TestServer CreateServer(string url)
+        private TestServer CreateServer()
         {
             var builder = new WebHostBuilder()
-                //.UseUrls(url)
                 .UseStartup<Startup>()
-                .ConfigureAppConfiguration(config => config.AddUserSecrets<Startup>())
+                .ConfigureAppConfiguration(config => config.AddUserSecrets<Startup>().AddEnvironmentVariables())
                 .ConfigureLogging(logging => logging.AddDebug());
 
             return new TestServer(builder);
