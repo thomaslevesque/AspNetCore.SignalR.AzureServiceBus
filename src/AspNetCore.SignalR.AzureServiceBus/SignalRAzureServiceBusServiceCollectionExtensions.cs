@@ -24,6 +24,7 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.AddSingleton<INodeIdProvider, NodeIdProvider>();
             builder.Services.AddSingleton<IMessageSenderProvider, MessageSenderProvider>();
             builder.Services.AddSingleton<IServiceBusPublisher, ServiceBusPublisher>();
+            builder.Services.AddSingleton<IServiceBusListener, ServiceBusListener>();
             builder.Services.AddSingleton(typeof(MessageSenderHubLifetimeManager<>));
             builder.Services.AddSingleton(typeof(HubLifetimeManager<>), typeof(AzureServiceBusHubLifetimeManager<>));
             builder.Services.AddHostedService<MessageDispatcher>();

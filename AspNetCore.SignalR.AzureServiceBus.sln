@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.SignalR.AzureServiceBus.IntegrationTests", "tests\AspNetCore.SignalR.AzureServiceBus.IntegrationTests\AspNetCore.SignalR.AzureServiceBus.IntegrationTests.csproj", "{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,18 @@ Global
 		{09FFB0A6-1EF3-404D-8A7F-C377D93F5C8F}.Release|x64.Build.0 = Release|Any CPU
 		{09FFB0A6-1EF3-404D-8A7F-C377D93F5C8F}.Release|x86.ActiveCfg = Release|Any CPU
 		{09FFB0A6-1EF3-404D-8A7F-C377D93F5C8F}.Release|x86.Build.0 = Release|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Debug|x64.Build.0 = Debug|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Debug|x86.Build.0 = Debug|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Release|x64.ActiveCfg = Release|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Release|x64.Build.0 = Release|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Release|x86.ActiveCfg = Release|Any CPU
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +87,7 @@ Global
 		{16E4EF9C-DF55-408D-B0BA-85445BA17742} = {970C7886-681A-48B2-9A06-F8EEEDD78889}
 		{0780F422-4C65-48B7-B337-24DDAB9A0508} = {932E7DED-D9BA-4B46-A7B8-D1398AE9B97F}
 		{09FFB0A6-1EF3-404D-8A7F-C377D93F5C8F} = {932E7DED-D9BA-4B46-A7B8-D1398AE9B97F}
+		{1C50974B-A96C-4DCB-BF0C-40BA3A4062A3} = {932E7DED-D9BA-4B46-A7B8-D1398AE9B97F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1360DB76-5A96-454E-9833-DFE21BA212D5}
